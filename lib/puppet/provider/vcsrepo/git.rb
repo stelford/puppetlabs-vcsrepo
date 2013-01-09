@@ -114,8 +114,14 @@ Puppet::Type.type(:vcsrepo).provide(:git, :parent => Puppet::Provider::Vcsrepo) 
       args << '--bare'
     end
     if !File.exist?(File.join(@resource.value(:path), '.git'))
-      args.push(source, path)
+      args.push(source, File.expand_path(path))
+      # Git doesn't like to be run with a working directory
+      # that it can't access -- so chdir to / before doing anything
+      wd = File.expand_path( Dir.getwd() )
+      Dir.chdir("/")
       git_with_identity(*args)
+      # Change back to our previous working dir
+      Dir.chdir(wd)
     else
       notice "Repo has already been cloned"
     end

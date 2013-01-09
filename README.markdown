@@ -1,6 +1,18 @@
 vcsrepo
 =======
 
+Note
+----
+
+This fork provides the patch from xgoat already rolled in,
+along with the changes to make it ruby 1.8.7 compliant. If
+this doesn't mean anything to you, then this is probably 
+the wrong repo for you .. or .. in the words of Obi Wan Kenobi;
+
+This is not the repo you are looking for
+
+(I think he said that)
+
 Purpose
 -------
 
